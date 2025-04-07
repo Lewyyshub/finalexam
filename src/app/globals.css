@@ -25,3 +25,15 @@ body {
     text-wrap: balance;
   }
 }
+
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #555;
+
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}

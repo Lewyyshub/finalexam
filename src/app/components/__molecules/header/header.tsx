@@ -1,10 +1,28 @@
+"use client";
 import Link from "next/link";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
+import LoginedHeader from "./loginedheader";
+
 function Header() {
+  const pathname = usePathname();
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    const user = localStorage.getItem("user");
+    setIsLoggedIn(!!user);
+  }, []);
+
+  if (pathname === "/login" || pathname === "/signup") return null;
+
+  if (isLoggedIn) {
+    return <LoginedHeader />;
+  }
+
   return (
-    <div className="w-[full] h-[64px]  p-2 flex items-center justify-around">
-      <div className="FIRST_DIV max-w-[546px]  h-[48px] w-full flex gap-5">
+    <div className="w-[full] h-[64px]  p-2 flex items-center justify-between">
+      <div className="FIRST_DIV max-w-[546px] pl-4 h-[48px] w-full flex gap-5">
         <div className="flex items-center justify-center">
           <Link href={"/"}>
             <Image
@@ -36,7 +54,7 @@ function Header() {
           placeholder="What do you want to play?"
         />
       </div>
-      <div className="SECOND_DIV text-[#656565] flex gap-3 items-center font-[700]">
+      <div className="SECOND_DIV text-[#b3b3b3] flex gap-3 items-center pr-40 font-[700]">
         <Link href={"https://www.spotify.com/ge/premium/"}>Premium</Link>
         <Link href={"https://support.spotify.com/ge/"}>Support</Link>
         <Link href={"https://www.spotify.com/ge/download/windows/"}>
@@ -44,13 +62,13 @@ function Header() {
         </Link>
         <div className="w-[2px] h-[25px] bg-[#656565]"></div>
         <a href="https://open.spotify.com/download">InstallApp</a>
-        <div className="LOGIN_SIGNUP w-[180px] h-[48px] flex gap-1 font-[700]">
+        <div className="LOGIN_SIGNUP w-[180px] h-[48px] flex gap-3 text-center text-nowrap font-[700]">
           <Link href={"/signup"} className="w-[72px] flex items-center">
             Sigun Up
           </Link>
           <Link
             href={"/login"}
-            className="w-[108px] h-[48px] text-[black] rounded-[50px] bg-[white] flex items-center justify-center"
+            className="w-[108px] h-[48px] text-[black] text-[14px] rounded-[50px] bg-[white] flex items-center justify-center"
           >
             Log in
           </Link>
@@ -61,3 +79,4 @@ function Header() {
 }
 
 export default Header;
+
