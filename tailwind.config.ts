@@ -12,6 +12,11 @@ const config: Config = {
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
+      screens: {
+        "lg-custom": "1336px", // Custom breakpoint at 1336px (desktop-first)
+        md: "1336px", // Medium screens (e.g., tablets)
+        sm: "640px",
+      },
     },
   },
   plugins: [],

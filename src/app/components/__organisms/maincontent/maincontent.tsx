@@ -3,13 +3,14 @@ import React, { useState } from "react";
 import Image from "next/image";
 import Footer from "../../__molecules/footer/footer";
 import { trendingSongs, popularArtists } from "../../../songs";
+import { useRouter } from "next/navigation";
 
 function Maincontent() {
   const [showAllSongs, setShowAllSongs] = useState(false);
   const [showAllArtists, setShowAllArtists] = useState(false);
+  const router = useRouter();
 
   const toggleShowAllSongs = () => setShowAllSongs(!showAllSongs);
-
   const toggleShowAllArtists = () => setShowAllArtists(!showAllArtists);
 
   return (
@@ -26,23 +27,23 @@ function Maincontent() {
             {showAllSongs ? "Show less" : "Show all"}
           </span>
         </div>
-        <div className="SONGS flex gap-4 md:gap-5 mt-4 flex-wrap justify-center sm:justify-start">
+        <div className="SONGS flex gap-4 md:gap-5 mt-4 justify-center flex-wrap sm:items-center">
           {trendingSongs
-            .slice(0, showAllSongs ? trendingSongs.length : 6)
+            .slice(0, showAllSongs ? trendingSongs.length : 5)
             .map((song, index) => (
               <div
                 key={index}
-                className="flex flex-col p-2 w-[140px] sm:w-[180px] md:w-[220px] h-[auto] gap-1 hover:bg-[rgb(30,30,30)] transition rounded-[5px]"
+                onClick={() => router.push(`/song/${song.id}`)}
+                className="flex flex-col p-2 w-[140px] sm:w-[290px] md:w-[220px] h-auto gap-1 hover:bg-[rgb(30,30,30)] transition rounded-[5px] cursor-pointer"
               >
-                <div className="flex flex-col gap-1 group relative cursor-pointer">
+                <div className="flex flex-col gap-1 group relative">
                   <Image
-                    className="rounded-[5px] object-fit w-[280px] h-[240px]"
+                    className="rounded-[5px] object-scale-down w-[280px] h-[240px]"
                     src={song.image}
                     alt={song.title}
                     width={220}
                     height={220}
                   />
-
                   <Image
                     className="absolute top-[55%] right-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                     src={"/icon.png"}
@@ -74,13 +75,14 @@ function Maincontent() {
             {showAllArtists ? "Show less" : "Show all"}
           </span>
         </div>
-        <div className="SONGS flex gap-4 md:gap-5 mt-4 flex-wrap justify-center sm:justify-start">
+        <div className="SONGS flex gap-4 md:gap-5 mt-4 flex-wrap justify-center sm:gap-6">
           {popularArtists
-            .slice(0, showAllArtists ? popularArtists.length : 6)
+            .slice(0, showAllArtists ? popularArtists.length : 5)
             .map((artist, index) => (
               <div
                 key={index}
-                className="flex flex-col p-2 w-[140px] sm:w-[180px] md:w-[220px] h-[auto] gap-1 hover:bg-[rgb(30,30,30)] transition rounded-[5px]"
+                onClick={() => router.push(`/artist/${artist.id}`)}
+                className="flex flex-col p-2 w-[140px] sm:w-[180px] md:w-[220px] h-[auto] gap-1 hover:bg-[rgb(30,30,30)] transition rounded-[5px] cursor-pointer"
               >
                 <div className="flex flex-col gap-1 group relative">
                   <Image
@@ -108,11 +110,9 @@ function Maincontent() {
             ))}
         </div>
       </div>
-
       <Footer />
     </div>
   );
 }
 
 export default Maincontent;
-

@@ -17,19 +17,18 @@ function Sidebar() {
   };
 
   return (
-    <div className="w-full max-w-[420px] h-[765px] ml-2 flex flex-col bg-[rgb(18,18,18)] rounded-[10px] gap-10">
+    <div className="w-full lg:max-w-[420px] h-[465px] lg:ml-2 ml-0 flex flex-col bg-[rgb(18,18,18)] rounded-[10px] gap-10">
       <div className="YOUR_LIBRARY flex justify-between p-5">
         <p className="font-[700]">Your Library</p>
         <button>➕</button>
       </div>
 
-      <div className="flex gap-5 flex-col  pl-2">
+      <div className="flex gap-5 flex-col pl-2">
         <div className="CREATE_PLAYLIST font-[700] w-full max-w-[404px] min-h-[150px] flex flex-col items-start p-5 gap-4 bg-[#1f1f1f] rounded-[5px] relative">
           <div className="gap-1 flex flex-col">
             <h1>Create your first playlist</h1>
-            <p className="text-[13px]">It's easy, we'll help you</p>
+            <p className="text-[13px]">Its easy, well help you</p>
           </div>
-
           <div
             onClick={handleCreatePlaylist}
             className="cursor-pointer w-[125px] h-[32px] bg-[white] text-[black] rounded-[20px] flex items-center justify-center"
@@ -65,9 +64,9 @@ function Sidebar() {
 
         <div className="CREATE_PLAYLIST font-[700] w-full max-w-[404px] h-[134px] flex flex-col items-start p-5 gap-4 bg-[#1f1f1f] rounded-[5px]">
           <div className="flex flex-col gap-1">
-            <h1>Let's find some podcasts below</h1>
+            <h1>Lets find some podcasts below</h1>
             <p className="text-[13px]">
-              We'll keep you updated on new episodes
+              Well keep you updated on new episodes
             </p>
           </div>
           <div className="w-[142px] h-[32px] bg-[white] text-[black] rounded-[20px] flex items-center justify-center">
@@ -78,7 +77,7 @@ function Sidebar() {
         </div>
       </div>
 
-      <div className="w-full max-w-[420px] h-[208px] mt-40 pl-4">
+      <div className="w-full max-w-[420px] lg:block hidden h-[208px] mt-40 pl-4">
         <div className="flex flex-col gap-2">
           <div className="text-[11px] text-[#b3b3b3] gap-4 flex flex-wrap">
             <span>Legal</span>

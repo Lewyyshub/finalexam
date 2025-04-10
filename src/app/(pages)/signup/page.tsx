@@ -5,7 +5,6 @@ import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import { redirect } from "next/dist/server/api-utils";
 
 type Step = 1 | 2 | 3;
 
@@ -15,8 +14,7 @@ type FormData = {
   password: string;
 };
 
-
-const emailSchema = yup.object().shape({
+const emailSchema: any = yup.object().shape({
   email: yup.string().email("Invalid email").required("Email is required"),
 });
 
@@ -64,18 +62,18 @@ function Signup(): JSX.Element {
       };
 
       localStorage.setItem("user", JSON.stringify(finalData));
-      alert("✅ რეგისტრაცია წარმატებით დასრულდა!");
+      alert("Registration Succesfully");
     }
   };
 
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="flex justify-center items-center w-full max-w-[326px] min-w-[480px] mx-auto flex-col pt-20 gap-10"
+      className="flex justify-center items-center w-full max-w-[480px] mx-auto flex-col pt-20 gap-10 px-4"
     >
-      <div className="flex flex-col items-center">
+      <div className="flex flex-col items-center text-center">
         <Image src="/spotify.png" alt="spotify" width={40} height={40} />
-        <h1 className="font-[700] text-center text-wrap text-[2.5rem] leading-tight">
+        <h1 className="font-[700] text-[2rem] sm:text-[2.5rem] leading-tight">
           Sign up to <br />
           start listening
         </h1>
@@ -83,7 +81,7 @@ function Signup(): JSX.Element {
 
       <div className="REGISTER_DIV flex flex-col gap-3 w-full items-center">
         {step === 1 && (
-          <div className="w-[324px] flex flex-col gap-1">
+          <div className="w-full max-w-[324px] flex flex-col gap-1">
             <label>Email address</label>
             <input
               {...register("email")}
@@ -98,7 +96,7 @@ function Signup(): JSX.Element {
         )}
 
         {step === 2 && (
-          <div className="w-[324px] flex flex-col gap-1">
+          <div className="w-full max-w-[324px] flex flex-col gap-1">
             <label>Date of Birth</label>
             <input
               {...register("birthdate")}
@@ -112,7 +110,7 @@ function Signup(): JSX.Element {
         )}
 
         {step === 3 && (
-          <div className="w-[324px] flex flex-col gap-1">
+          <div className="w-full max-w-[324px] flex flex-col gap-1">
             <label>Password</label>
             <input
               {...register("password")}
@@ -128,7 +126,7 @@ function Signup(): JSX.Element {
 
         <button
           type="submit"
-          className="w-[324px] h-[48px] mt-3 bg-green-500 rounded-[50px] text-black font-[700]"
+          className="w-full max-w-[324px] h-[48px] mt-3 bg-green-500 rounded-[50px] text-black font-[700]"
         >
           {step === 3 ? "Sign up" : "Next"}
         </button>
@@ -139,7 +137,7 @@ function Signup(): JSX.Element {
           <div>
             <span>or</span>
           </div>
-          <div className="w-[324px] flex flex-col font-[700] gap-4">
+          <div className="w-full max-w-[324px] flex flex-col font-[700] gap-4">
             <div className="border rounded-[50px] flex gap-5 items-center justify-center h-[48px]">
               <Image src="/google.svg" alt="google" width={24} height={24} />
               <button type="button">Sign up with Google</button>
@@ -161,10 +159,10 @@ function Signup(): JSX.Element {
         </>
       )}
 
-      <div className="w-[324px] h-[1px] bg-[gray]"></div>
+      <div className="w-full max-w-[324px] h-[1px] bg-gray-500" />
 
-      <div className="flex gap-1">
-        <p className="text-[gray]">Already have an account?</p>
+      <div className="flex flex-wrap justify-center gap-1 text-center text-sm">
+        <p className="text-gray-400">Already have an account?</p>
         <Link href="/login" className="underline">
           Log in here
         </Link>

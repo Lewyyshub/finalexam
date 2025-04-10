@@ -19,16 +19,19 @@ function Signedout() {
   }
 
   return (
-    <div className="w-full h-[66px] flex items-center justify-between p-5 mt-2 bg-gradient-to-r from-[#af2896] to-[#509bf5]">
-      <div className="flex flex-col">
-        <p className="text-[14px] font-[700]">Preview of Spotify</p>
-        <h1>
+    <div className="w-full h-auto flex flex-col md:flex-row items-center justify-between gap-3 md:gap-0 p-4 md:p-5 mt-2 bg-gradient-to-r from-[#af2896] to-[#509bf5]">
+      <div className="flex flex-col text-center md:text-left">
+        <p className="text-[12px] md:text-[14px] font-[700]">
+          Preview of Spotify
+        </p>
+        <h1 className="text-[13px] md:text-[16px] font-[500]">
           Sign up to get unlimited songs and podcasts with occasional ads. No
           credit card needed.
         </h1>
       </div>
-      <div className="w-[153px] h-[48px] bg-[white] text-black flex items-center justify-center rounded-[50px] font-[700]">
-        <Link href={"/signup"}>Sign up free</Link>
+
+      <div className="w-full md:w-[153px] h-[40px] md:h-[48px] bg-white text-black flex items-center justify-center rounded-[50px] font-[700] text-[14px] md:text-[16px]">
+        <Link href="/signup">Sign up free</Link>
       </div>
     </div>
   );
